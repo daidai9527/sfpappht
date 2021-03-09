@@ -42,7 +42,7 @@ class Leave extends Api
         $res = $leave->with('returns')->select();
         $res ? $res->toArray() : '';
         if ($res) {
-            $this->success('留言显示'.$user, $res, 200);
+            $this->success('留言显示'.$user['mobile'], $res, 200);
         } else {
             $this->error('系统错误', '', 100);
         }
