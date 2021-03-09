@@ -280,5 +280,5 @@ return [
         //API接口地址
         'api_url'               => 'https://api.fastadmin.net',
     ],
-    'host'=>'http://sq.bjspys.top'
+    'host'=>'http://178.236.47.25'
 ];

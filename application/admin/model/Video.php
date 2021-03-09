@@ -44,6 +44,10 @@ class Video extends Model
         if ( ! preg_match('/^http/', $data['video_image'])) {
             return config('host') . $data['video_image'];
         }
+        else if($data['video_image'])
+        {
+            return  $data['video_image'];
+        }
     }
 
     public function getAppTextAttr($video, $data)

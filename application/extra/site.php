@@ -1,7 +1,7 @@
 <?php
 
 return array (
-  'name' => '我的网站',
+  'name' => '私房片社区',
   'beian' => '',
   'cdnurl' => '',
   'version' => '1.0.1',
@@ -40,8 +40,8 @@ return array (
   'djgg' => '2',
   'mrgk' => '2',
   'erm' => '2',
-  'ggg' => '<p style="line-height: 1.2;"><span style="font-size: 14px;">最新官网</span><a href="http://htsq98.vip/" target="_blank">http://jssq.tv/</a><span style="font-size: 14px;">，请各位老铁详记最新地址，若软件有什么问题可以重新下载，几十万部成人视频秒播给你最高享受，使用过程中如有任何问题可以及时留言咨询</span></p><p style="line-height: 1.2;"><span style="font-size: 14px;">请勿相信任何转账信息，如有问题请联系在线客</span></p>',
-  'fxlj' => '華人聚集的成人互動社區，海量精品成人資源等妳來看，讓聚色社區成為妳值得留戀的壹款APP:http://huatang.xyz/',
+  'ggg' => '<p style="line-height: 1.2;"><span style="font-size: 14px;">私房片所有资源承诺永久免费</span></p>',
+  'fxlj' => '華人聚集的成人互動社區，海量精品成人資源等妳來看，讓聚色社區成為妳值得留戀的壹款APP',
   'tvideo' => '2',
   'integral_one' => '0',
   'integral_two' => '100',
@@ -52,11 +52,11 @@ return array (
   'agent_one' => '20%',
   'agent_two' => '30%',
   'agent_three' => '50%',
-  'gdt' => '请勿相信任何转账信息，如有问题咨询在线客服！商务Telegram：',
+  'gdt' => '请勿相信任何转账信息，如有问题咨询在线客服！',
   'allowfree' => '1',
   'pay' => '1',
-  'website' => 'http://www.jssq.tv/h5',
+  'website' => 'http://178.236.47.25/h5',
   'direct' => '严正声明：    请勿相信任何直播间广告，花堂社区没有赌博广告，没有卖片广告更不提供任何线下约炮活动，任何主播与堂主私加联系方式属于个人行为，造成的任何后果自行承担与本平台无关！',
-  'video_prefix' => 'https://aev.h-shops.com',
-  'chat' => 'http://www.mfkefu.com/chat-11.html?from=pcwin',
+  'video_prefix' => '',
+  'chat' => '',
 );

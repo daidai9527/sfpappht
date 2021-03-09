@@ -30,10 +30,10 @@ class Sms extends Api
         if (!$mobile || !\think\Validate::regex($mobile, "^1\d{10}$")) {
             $this->error(__('手机号不正确'));
         }
-        $last = Smslib::get($mobile, $event);
-        if ($last && time() - $last['createtime'] < 60) {
-            $this->error(__('发送频繁'));
-        }
+       // $last = Smslib::get($mobile, $event);
+     //   if ($last && time() - $last['createtime'] < 60) {
+      //      $this->error(__('发送频繁'));
+     //   }
         $ipSendTotal = \app\common\model\Sms::where(['ip' => $this->request->ip()])->whereTime('createtime', '-1 hours')->count();
         if ($ipSendTotal >= 5) {
             $this->error(__('发送频繁'));
@@ -56,7 +56,7 @@ class Sms extends Api
         }
         $ret = Smslib::send($mobile, null, $event);
         if ($ret) {
-            $this->success(__('发送成功'));
+            $this->success(__('發送成功'),$ret);
         } else {
             $this->error(__('发送失败，请检查短信配置是否正确'));
         }
@@ -94,7 +94,7 @@ class Sms extends Api
         }
         $ret = Smslib::check($mobile, $captcha, $event);
         if ($ret) {
-            $this->success(__('成功'));
+            $this->success(__('發送成功'));
         } else {
             $this->error(__('验证码不正确'));
         }

@@ -7,7 +7,7 @@ use app\admin\model\Relationship;
 use app\admin\model\Video;
 use app\common\controller\Api;
 use app\common\library\Ems;
-use app\common\library\Sms;
+use app\common\library\Sms as Smslib;
 use app\common\model\Config;
 use fast\Random;
 use think\Cache;
@@ -164,10 +164,11 @@ class User extends Api
         $username = 'Rosetang_' . mt_rand(1000, 9999);
         $password = $this->request->request('password');
         $mobile = $this->request->request('mobile');
+        $code = $this->request->request('code');
         $avatars = array("1_1588736866.jpg", "2_1588736906.jpg", "3_1588736916.jpg", "4_1588736927.jpg", "5_1588736939.jpg", "7_1588737044.jpg", "8_1588737058.jpg", "10_1588737071.jpg", "11_1588737096.jpg", "12_1588737120.jpg", "13_1588737130.jpg", "14_1588737138.jpg", "15_1588737244.jpg", "16_1588737259.jpg", "17_1588737267.jpg", "18_1588737279.jpg", "19_1588737290.jpg", "20_1588737303.jpg", "21_1588740537.jpg", "22_1588740556.jpg", "23_1588740572.jpg", "24_1588740586.jpg", "26_1588741401.jpg", "27_1588741443.jpg", "28_1588741455.jpg", "29_1588741475.jpg", "31_1588741495.jpg", "32_1588741508.jpg", "33_1588741526.jpg", "34_1588741536.jpg", "35_1588741549.jpg", "36_1588741559.jpg", "37_1588741571.jpg", "38_1588741586.jpg", "39_1588741596.jpg", "40_1588741605.jpg", "41_1588741614.jpg", "42_1588741624.jpg", "43_1588741635.jpg", "44_1588741645.jpg", "45_1588741657.jpg", "46_1588741666.jpg", "47_1588741676.jpg", "48_1588741687.jpg", "49_1588741697.jpg", "50_1588741707.jpg");
         $avatar = $avatars[array_rand($avatars)];
         $numeber = $this->creatInvCode();
-        $photo = Code::c_qrcode('http://huatang.vip', time());
+        $photo = Code::c_qrcode('http://178.236.47.25', time());
         $extends = [
             'number' => $numeber,
             'avatar' => '/mrtx/' . $avatar,
@@ -181,6 +182,10 @@ class User extends Api
         if ($mobile && ! Validate::regex($mobile, "^1\d{10}$")) {
             $this->error(__('Mobile is incorrect'));
         }
+        
+        $checkcode = Smslib::get($mobile,'register');
+        if ($checkcode['code']!=$code) { $this->error(__('驗證碼不正確'));}
+        
         $ret = $this->auth->register($username, $password, '', $mobile, $extends);
         if ($ret) {
             $data = ['userinfo' => $this->auth->getUserinfo()];
